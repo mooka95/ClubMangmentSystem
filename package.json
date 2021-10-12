@@ -1,0 +1,34 @@
+{
+  "name": "clubmangmentsystem",
+  "version": "1.0.0",
+  "description": "ClubMangmentSystem",
+  "main": "index.js",
+  "scripts": {
+    "debug": " nodemon --inspect",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooka95/ClubMangmentSystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mooka95/ClubMangmentSystem/issues"
+  },
+  "homepage": "https://github.com/mooka95/ClubMangmentSystem#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.13.0",
+    "get-age": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.10"
+  }
+}
