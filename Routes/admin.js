@@ -5,8 +5,9 @@ const CustomError=require("../helpers/CustomError");
 const { check
  } = require('express-validator');
 const validateRequest=require('../middlewares/validateRequest');
+const authntication= require('../middlewares/Authntication')
 
-router.post('/signup',validateRequest([
+router.post('/signup',authntication,validateRequest([
     check('email').exists(),
     check('email').isEmail(),
     check('password').exists(),
@@ -26,16 +27,15 @@ router.post('/login',  async (req,res,next)=>{
     if(!admin){
         throw  new CustomError("Wrong userName or password",401);
     }
-    const isMatch=  admin.checkPassword(req.body.password);
+    const isMatch= await admin.checkPassword(req.body.password);
     if(!isMatch){
         throw  new CustomError("Wrong userName or password",401);
     }
     let token =  await admin.generateToken();
+    admin.token=token;
 
   res.json({
       admin,
-      token,
-      "message":"Logged In Succesfully"
   })
 
 })

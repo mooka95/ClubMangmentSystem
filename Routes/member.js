@@ -18,12 +18,41 @@ res.json({
 router.get('/',authntication,async (req,res,next)=>{
 
     
-    const member = await Member.find({});
+    const members = await Member.find({});
  
     res.json({
-        member
+        members
     })
     
+    })
+
+
+    router.delete('/:id', authntication,async (req,res,next)=>{
+       await Member.deleteOne({_id:req.params.id});
+       const members = await Member.find({});
+
+     res.json({
+         members,
+         "message":"deleted Succesfully"
+     })
+      
+
+    })
+
+    router.put('/',authntication,async (req,res,next)=>{
+
+        const updatedMember= await Member.updateOne({_id:req.body._id},req.body);
+
+        res.json({
+
+            updatedMember
+        })
+
+
+
+
+
+
     })
 
 module.exports= router;

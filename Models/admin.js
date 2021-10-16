@@ -13,6 +13,7 @@ const adminSchema=new mongoose.Schema({
 
 
  password:{type:String,required:true,minlength:4},
+ token:{type:String}
 
 
 },{
@@ -37,7 +38,7 @@ adminSchema.methods.checkPassword= async function(plainPassword){
 }
 adminSchema.methods.generateToken= async function(){
 
-   return await  signJwt({id:this.id},jwtSecret,{expiresIn:'1h'})
+   return await  signJwt({id:this.id},jwtSecret,{expiresIn:'3h'})
 }
 
 adminSchema.statics.getAdminFromToken= async function(token){
