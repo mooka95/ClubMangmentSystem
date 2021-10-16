@@ -12,10 +12,7 @@ app.use(cors());
 const adminRoute=require("./Routes/admin");
 const memberRoute=require("./Routes/member");
 const handleError = require('./middlewares/handleError');
-app.use('/',(req,res,next)=>{
 
-  res.send('welcome to our app');
-})
 
 app.use('/admin',adminRoute);
 app.use('/member',memberRoute);
