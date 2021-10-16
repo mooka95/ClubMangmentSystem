@@ -38,7 +38,7 @@ adminSchema.methods.checkPassword= async function(plainPassword){
 }
 adminSchema.methods.generateToken= async function(){
 
-   return await  signJwt({id:this.id},jwtSecret,{expiresIn:'1m'})
+   return await  signJwt({id:this.id},jwtSecret,{expiresIn:'3h'})
 }
 
 adminSchema.statics.getAdminFromToken= async function(token){
