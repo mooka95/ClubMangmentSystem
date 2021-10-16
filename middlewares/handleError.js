@@ -1,18 +1,15 @@
 const CustomError = require("../helpers/CustomError")
 
 module.exports=(err,req,res,next)=>{
- switch(err.code){
-    case 11000:
-        throw new CustomError('Email Already exists',409);
-        break;
-        default:
-            next();
-
-
-
+ if(err.message ==='jwt expired'){
+     throw new CustomError("please login first",401)
  }
+ if(err.code===11000)
+ throw new CustomError("Email already Exists",409)
 
 
+else
+next();
 
 
 

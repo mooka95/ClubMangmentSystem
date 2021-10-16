@@ -40,9 +40,11 @@ router.get('/',authntication,async (req,res,next)=>{
     })
 
     router.put('/',authntication,async (req,res,next)=>{
-      req.age=req.getAge(req.body.birthDate);
 
-        const updatedMember= await Member.updateOne({_id:req.body._id},req.body);
+        const member = new Member(req.body);
+        member.age=member.getAge(req.body.birthDate);
+
+        const updatedMember= await Member.updateOne({_id:req.body._id},member);
 
         res.json({
 
