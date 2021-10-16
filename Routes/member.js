@@ -40,6 +40,7 @@ router.get('/',authntication,async (req,res,next)=>{
     })
 
     router.put('/',authntication,async (req,res,next)=>{
+      req.age=req.getAge(req.body.birthDate);
 
         const updatedMember= await Member.updateOne({_id:req.body._id},req.body);
 
